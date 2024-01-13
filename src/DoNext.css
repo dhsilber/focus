@@ -1,0 +1,132 @@
+:root {
+  --default-background-color: #90b1f3;
+  --focus-background-color: rgb(243, 167, 45);
+
+  /* --default-background-color: #90b1f3; */
+}
+
+.App {
+  display: grid;
+  grid-template-areas:
+    "todo tasks events"
+    "storageTodo storageTask storageEvent"
+    "track projects analyze"
+    "storageTrack storageProject analyze";
+  background-color: #282c34;
+  gap: 2px;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.analyze {
+  grid-area: analyze;
+  background-color: #90f3bb;
+}
+
+.track {
+  grid-area: track;
+  background-color: #338ef0;
+}
+
+.tasks {
+  grid-area: tasks;
+  background-color: var(--default-background-color);
+}
+
+.current-task {
+  background-color: var(--focus-background-color);
+}
+
+.events {
+  grid-area: events;
+  background-color: var(--default-background-color);
+}
+
+.todo {
+  grid-area: todo;
+  background-color: var(--default-background-color);
+}
+
+.notes {
+  grid-area: notes;
+  background-color: var(--default-background-color);
+}
+
+.projects {
+  grid-area: projects;
+  background-color: var(--default-background-color);
+}
+
+.storageTodo {
+  grid-area: storageTodo;
+  background-color: var(--default-background-color);
+}
+
+.storageEvent {
+  grid-area: storageEvent;
+  background-color: var(--default-background-color);
+}
+
+.storageProject {
+  grid-area: storageProject;
+  background-color: var(--default-background-color);
+}
+
+.storageTask {
+  grid-area: storageTask;
+  background-color: var(--default-background-color);
+}
+
+.storageTrack {
+  grid-area: storageTrack;
+  background-color: var(--default-background-color);
+}
+
+@media screen and (max-width: 600px) {
+  .App {
+    grid-template-areas:
+      "todo"
+      "tasks"
+      "storageTodo";
+    gap: 1px;
+  }
+
+  .analyze {
+    display: none;
+  }
+
+  .track {
+    display: none;
+  }
+
+  .events {
+    display: none;
+  }
+
+  .notes {
+    display: none;
+  }
+
+  .projects {
+    display: none;
+  }
+
+  .storageEvent {
+    display: none;
+  }
+
+  .storageProject {
+    display: none;
+  }
+
+  .storageTask {
+    display: none;
+  }
+
+  .storageTrack {
+    display: none;
+  }
+
+}

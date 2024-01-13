@@ -1,0 +1,16 @@
+:root {
+    --default-background-color: #90b1f3;
+    --focus-background-color: rgb(243, 167, 45);
+  
+    /* --default-background-color: #90b1f3; */
+  }
+
+.focus-task {
+    padding: 0.5px 4px;
+    margin: 0px 5px;
+}
+  
+.focus-current-task {
+    background-color: var(--focus-background-color);
+}
+  
