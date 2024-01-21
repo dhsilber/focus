@@ -6,7 +6,7 @@ import { EventSet, TodoSet, ProjectSet, TrackSet, TaskSet, Task } from '../DoDat
 import LoadData from '../LoadData'
 import UnloadData from '../UnloadData'
 
-function navigateToFocus() {
+export function navigateToFocus() {
     const url = "/focus"
     const link = document.createElement("a")
     link.href = url

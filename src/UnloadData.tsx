@@ -1,5 +1,3 @@
-import React from "react"
-
 export function exportUserInfo(jsonData: string, fileName: string) {
     const fileData = jsonData + '\n'
     const blob = new Blob([fileData], { type: "text/plain" })

@@ -29,7 +29,5 @@ export default function focusTaskImport(taskData: TaskSet): TaskV2Set {
         }
     })
 
-    console.log( result)
-
     return result
 }

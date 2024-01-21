@@ -1,10 +1,12 @@
 import { useCallback, useContext, useEffect } from "react"
 import FocusTaskList from "./FocusTaskList"
 import { FocusStateContext } from "./FocusStateProvider"
+import { FocusStorageContext } from "./FocusStorageProvider"
 
 export default function FocusTaskRoot() {
+    const {saveTaskV2Data} = useContext(FocusStorageContext)
 
-    const {taskData, dispatch} = useContext(FocusStateContext)
+    const {dispatch} = useContext(FocusStateContext)
 
     const handleKeyDown = useCallback((event: KeyboardEvent) => {
         event.stopPropagation()
@@ -26,27 +28,51 @@ export default function FocusTaskRoot() {
                 // //     handleMoveUp()
                 // //     break
                 // case '≠': // alt-=
-                //     console.log('key: alt+ ', event.key, ' - ', event.keyCode)
                 //     dispatch ({
                 //         type: 'create-task'
                 //     })
                 //     break
                 default:
-                    console.log('key: alt+', event.key, ' - ', event.keyCode)
+                    console.log('Alt + ', event.key, ' - ', event.keyCode)
+                    break
+            }
+        } else if (event.shiftKey) {
+            switch(event.key) {
+                case 'ArrowUp':
+                    dispatch({type: 'move-up'})
+                    break
+                case 'ArrowDown':
+                    dispatch({type: 'move-down'})
+                    break
+                case 'ArrowRight':
+                    dispatch({type: 'indent'})
+                    break
+                case 'ArrowLeft':
+                    dispatch({type: 'outdent'})
+                    break
+                default:
+                    console.log('Shift + ', event.key, ' - ', event.keyCode)
                     break
             }
         } else {
             switch(event.key) {
+                case 's':
+                    saveTaskV2Data()
+                    break
                 case 'ArrowUp':
-                    console.log("Up!") 
                     dispatch({type: 'up'})
                     break
                 case 'ArrowDown':
-                    console.log("Down!") 
                     dispatch({type: 'down'})
                     break
+                case 'ArrowRight':
+                    dispatch({type: 'in-to-child'})
+                    break
+                case 'ArrowLeft':
+                    dispatch({type: 'out-to-parent'})
+                    break
                 default:
-                    console.log('key: ', event.key, ' - ', event.keyCode)
+                    console.log(event.key, ' - ', event.keyCode)
                     break
             }
         }  
@@ -61,5 +87,5 @@ export default function FocusTaskRoot() {
         }
     }, [handleKeyDown])
 
-    return  <FocusTaskList key={0} id={0} />
+    return  <FocusTaskList key={0} id={0} indent={0}/>
 }

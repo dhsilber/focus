@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest'
 import { render, screen } from "@testing-library/react"
 import FocusTaskList from "./FocusTaskList"
 import { defaultTaskV2Data } from "./FocusStorageProvider"
@@ -5,7 +6,7 @@ import { TaskV2Set } from "../DoData"
 import { FocusStateContext } from "./FocusStateProvider"
 
 test('display empty list of tasks', () => {
-    render(<FocusTaskList id={0} />)
+    render(<FocusTaskList id={0} indent={0}/>)
     expect(screen.queryByText('(root)')).not.toBeInTheDocument()
 })
 
@@ -26,7 +27,7 @@ test('display leaf node task', () => {
     }
     render(
         <FocusStateContext.Provider value={{taskData: taskData, dispatch: ()=>{}}}>
-            <FocusTaskList id={1} />
+            <FocusTaskList id={1} indent={0} />
         </FocusStateContext.Provider>
     )
 
@@ -51,7 +52,7 @@ test('display short list of tasks', () => {
     }
     render(
         <FocusStateContext.Provider value={{taskData: taskData, dispatch: ()=>{}}}>
-            <FocusTaskList id={0} />
+            <FocusTaskList id={0} indent={0} />
         </FocusStateContext.Provider>
     )
 
@@ -85,7 +86,7 @@ test('current task is highlighted', () => {
     }
     render(
         <FocusStateContext.Provider value={{taskData: taskData, dispatch: ()=>{}}}>
-            <FocusTaskList id={0} />
+            <FocusTaskList id={0} indent={0} />
         </FocusStateContext.Provider>
     )
 

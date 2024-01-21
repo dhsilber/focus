@@ -4,13 +4,17 @@ import { TaskV2Set } from "../DoData"
 import focusActionReducer from "./focusActionReducer"
 
 export type Action =
-    | { type: 'initialize', taskId: number }
-    | { type: 'create-task' }
+    // | { type: 'initialize', taskId: number }
+    // | { type: 'create-task' }
     | { type: 'down' }
     | { type: 'up' }
     | { type: 'move-down' }
     | { type: 'move-up' }
-    | { type: 'indent-right' }
+    | { type: 'indent' }
+    | { type: 'outdent' }
+    | { type: 'in-to-child' }
+    | { type: 'out-to-parent' }
+    | { type: 'replace-data', newState: TaskV2Set }
 
 const defaultTaskV2Data: TaskV2Set = {
     0: {
@@ -30,18 +34,18 @@ export interface FocusStateContextData {
 }
 
 export const FocusStateContext = createContext<FocusStateContextData>(
-    {taskData: defaultTaskV2Data, dispatch: ()=>{}})
+    { taskData: defaultTaskV2Data, dispatch: () => { } })
 
 export default function FocusStateProvider({ children }: { children: React.ReactNode }) {
-    const [storedTaskData, setStoredTaskData] = useContext(FocusStorageContext)
+    const {taskV2Storage, setTaskV2Storage} = useContext(FocusStorageContext)
 
-    const [state, dispatch] = useReducer(focusActionReducer, storedTaskData)
+    const [state, dispatch] = useReducer(focusActionReducer, taskV2Storage)
 
     useEffect(() => {
-        setStoredTaskData(state)
-    }, [setStoredTaskData, state])
+        setTaskV2Storage(state)
+    }, [setTaskV2Storage, state])
 
-    return <FocusStateContext.Provider value={{taskData: state, dispatch: dispatch}}>
+    return <FocusStateContext.Provider value={{ taskData: state, dispatch: dispatch }}>
         {children}
     </FocusStateContext.Provider>
 }

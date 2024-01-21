@@ -13,4 +13,15 @@
 .focus-current-task {
     background-color: var(--focus-background-color);
 }
-  
+
+.focus-indent-1 {
+    margin-left: 1em;
+}
+
+.focus-indent-2 {
+    margin-left: 2em;
+}
+
+.focus-indent-3 {
+    margin-left: 3em;
+}

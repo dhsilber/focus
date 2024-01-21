@@ -79,3 +79,10 @@ export interface TaskV2Set {
     currentId: number
     nextId: number
 }
+
+export interface TaskV2SetV2 {
+    [index: number]: TaskV2
+    currentId: number
+    nextId: number
+    editingId: number
+}
