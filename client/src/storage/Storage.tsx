@@ -137,15 +137,15 @@ const Storage = () => {
             {/* <h3>Todos Storage</h3>
             <LoadData setData={setTodoStorage} prompt={"Ingest todos:"} />
             <UnloadData jsonData={todoData} prompt={"Download todos"} fileName='doNextTodoDownload.json' /> */}
-            <div>
+            <span>
                 <button onClick={() => navigateToTodoDataInterchange()} style={{padding: '0.5rem 0.5rem'}}><div>Todo Data</div>Interchange</button>
-            </div>
-            <div>
+            </span>
+            <span>
                 <button onClick={() => navigateToTaskDataInterchange()} style={{padding: '0.5rem 0.5rem'}}><div>Task Data</div>Interchange</button>
-            </div>
-            <div>
+            </span>
+            <span>
                 <button onClick={() => navigateToFocus()} style={{padding: '1rem 0.5rem'}}>Focus</button>
-            </div>
+            </span>
         </div>
         <div className='storageEvent'>
             <h3>Events Storage</h3>

@@ -6,8 +6,20 @@ export interface Todo {
     persist: boolean
 }
 
+export interface TodoV2 {
+    text: string
+    done: number
+    days: number[]
+    persist: boolean
+    no_earlier: string
+}
+
 export interface TodoSet {
     todos: Todo[]
+}
+
+export interface TodoSetV2 {
+    todos: TodoV2[]
 }
 
 export interface Event {
