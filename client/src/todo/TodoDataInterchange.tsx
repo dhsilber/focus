@@ -14,7 +14,7 @@ function TodoDataInterchange() {
     const [todoStorage, setTodoStorage] = useLocalStorageState<TodoSet>(TodoStorageKey, {})
     const [todoData, setTodoData] = useState('')
 
-    const [, setTodoV2Storage] = useLocalStorageState<TodoSetV2>(TodoV2StorageKey, {})
+    const [todoV2Storage, setTodoV2Storage] = useLocalStorageState<TodoSetV2>(TodoV2StorageKey, {})
 
     function updateToTodoV2() {
         const updateSet: TodoSetV2 = { todos: [] }
@@ -37,6 +37,7 @@ function TodoDataInterchange() {
     }
 
     const currentTodoData = JSON.stringify(todoStorage, null, 2)
+    const currentTodoV2Data = JSON.stringify(todoV2Storage, null, 2)
 
     return <>
         <div>
@@ -53,6 +54,7 @@ function TodoDataInterchange() {
                 <button onClick={() => navigateToHome()} style={{ padding: '0.5rem' }}><div>Return to</div> main page</button>
             </span>
             <button onClick={() => updateToTodoV2()} style={{ padding: '0.5rem' }}><div>Update to</div>TodoV2</button>
+            <button onClick={() => setTodoData(currentTodoV2Data)} style={{ padding: '0.5rem' }}><div>Show</div>TodoV2 Data</button>
         </div>
         <div>
             <textarea
