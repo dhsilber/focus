@@ -133,18 +133,18 @@ const Storage = () => {
     const projectData = JSON.stringify(projectStorage, null, 2)
 
     return <>
-        <div className='storage'>
+        <div className='storage' style={{ display: 'flex', flexDirection: 'row'}}>
             {/* <h3>Todos Storage</h3>
             <LoadData setData={setTodoStorage} prompt={"Ingest todos:"} />
             <UnloadData jsonData={todoData} prompt={"Download todos"} fileName='doNextTodoDownload.json' /> */}
             <div>
-                <button onClick={() => navigateToTodoDataInterchange()}>Todo Data Interchange</button>
+                <button onClick={() => navigateToTodoDataInterchange()} style={{padding: '0.5rem 0.5rem'}}><div>Todo Data</div>Interchange</button>
             </div>
             <div>
-                <button onClick={() => navigateToTaskDataInterchange()}>Task Data Interchange</button>
+                <button onClick={() => navigateToTaskDataInterchange()} style={{padding: '0.5rem 0.5rem'}}><div>Task Data</div>Interchange</button>
             </div>
             <div>
-                <button onClick={() => navigateToFocus()}>Focus</button>
+                <button onClick={() => navigateToFocus()} style={{padding: '1rem 0.5rem'}}>Focus</button>
             </div>
         </div>
         <div className='storageEvent'>

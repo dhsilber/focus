@@ -21,10 +21,10 @@ function TodoDataInterchange() {
 
     return <>
         <div>
-            <button onClick={() => setTodoData('')}>Clear</button>
-            <button onClick={() => setTodoData(currentTodoData)}>Export ToDo data</button>
-            <button onClick={() => setTodoStorage(JSON.parse(todoData))}>Import ToDo data</button>
-            <button onClick={() => navigateToHome()}>Return to main page</button>
+            <button onClick={() => setTodoData('')} style={{padding: '1rem'}}>Clear</button>
+            <button onClick={() => setTodoData(currentTodoData)} style={{padding: '1rem'}}>Export ToDo data</button>
+            <button onClick={() => setTodoStorage(JSON.parse(todoData))} style={{padding: '1rem'}}>Import ToDo data</button>
+            <button onClick={() => navigateToHome()} style={{padding: '1rem'}}>Return to main page</button>
         </div>
         <div>
             <textarea
