@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import RepeatingDos from './RepeatingDos'
 import MockDate from 'mockdate'
 import { defaultToDoData } from '../storage/Storage'
-import { Todo } from '../DoData'
+import { TodoV2 } from '../DoData'
 
 
 afterEach(() => {
@@ -61,10 +61,10 @@ test.each([
 
 test('do not show todos marked for other than the current day', () => {
     MockDate.set(Date.UTC(2022, 8, 9, 4))
-    const todoData: Todo[] = [
-        { text: "Download default configuration", done: 0, days: [], persist: false },
-        { text: "Edit to make it yours", done: 1662696000000, days: [0, 1, 2, 3, 4, 6], persist: false },
-        { text: "Ingest your data", done: 0, days: [5], persist: false },
+    const todoData: TodoV2[] = [
+        { text: "Download default configuration", done: 0, days: [], persist: false, no_earlier: '' },
+        { text: "Edit to make it yours", done: 1662696000000, days: [0, 1, 2, 3, 4, 6], persist: false, no_earlier: '' },
+        { text: "Ingest your data", done: 0, days: [5], persist: false, no_earlier: '' },
     ]
 
     render(<RepeatingDos data={todoData} />)
@@ -76,10 +76,10 @@ test('do not show todos marked for other than the current day', () => {
 
 test('do show todos marked for other than the current day if they are persistent', () => {
     MockDate.set(Date.UTC(2022, 8, 9, 4)) // Day of week is 5
-    const todoData: Todo[] = [
-        { text: "Download default configuration", done: 0, days: [], persist: false },
-        { text: "Edit to make it yours", done: 0, days: [0, 1, 2, 3, 4, 6], persist: true },
-        { text: "Ingest your data", done: 0, days: [3], persist: true },
+    const todoData: TodoV2[] = [
+        { text: "Download default configuration", done: 0, days: [], persist: false, no_earlier: '' },
+        { text: "Edit to make it yours", done: 0, days: [0, 1, 2, 3, 4, 6], persist: true, no_earlier: '' },
+        { text: "Ingest your data", done: 0, days: [3], persist: true, no_earlier: '' },
     ]
 
     render(<RepeatingDos data={todoData} />)
@@ -91,10 +91,10 @@ test('do show todos marked for other than the current day if they are persistent
 
 test('do not show todos marked for other than the current day if the last done time is since they were scheduled to become active even if they are persistent', () => {
     MockDate.set(Date.UTC(2021, 8, 9, 4)) // Day of week is 4
-    const todoData: Todo[] = [
-        { text: "Download default configuration", done: 1631160000000, days: [], persist: false },
-        { text: "Edit to make it yours", done: 1631160001000, days: [0, 1, 2, 3, 4, 6], persist: true },
-        { text: "Ingest your data", done: 1631160000000, days: [3], persist: true },
+    const todoData: TodoV2[] = [
+        { text: "Download default configuration", done: 1631160000000, days: [], persist: false, no_earlier: '' },
+        { text: "Edit to make it yours", done: 1631160001000, days: [0, 1, 2, 3, 4, 6], persist: true, no_earlier: '' },
+        { text: "Ingest your data", done: 1631160000000, days: [3], persist: true, no_earlier: '' },
     ]
 
     render(<RepeatingDos data={todoData} />)
