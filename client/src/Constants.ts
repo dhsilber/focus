@@ -1,4 +1,3 @@
-export const TodoStorageKey = 'do-next-todo'
 export const TodoV2StorageKey = 'do-next-todo-v2'
 export const EventStorageKey = 'do-next-event2'
 export const ProjectStorageKey = 'do-next-project'

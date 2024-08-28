@@ -1,15 +1,15 @@
 import useLocalStorageState from 'use-local-storage-state'
 import checker from "./Checker"
-import { TodoStorageKey } from "../Constants"
-import { Todo } from "../DoData"
+import { TodoV2StorageKey } from "../Constants"
+import { TodoV2 } from "../DoData"
 import { defaultToDoData } from "../storage/Storage"
 
 export interface ToDoProps {
-    todo: Todo
+    todo: TodoV2
 }
 
 const ToDo = ({ todo }: ToDoProps) => {
-    const [todoStorage, setTodoStorage] = useLocalStorageState(TodoStorageKey, {
+    const [todoStorage, setTodoStorage] = useLocalStorageState(TodoV2StorageKey, {
         defaultValue: defaultToDoData
     })
 

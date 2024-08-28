@@ -1,7 +1,7 @@
 import '../DoNext.css'
 import useLocalStorageState from 'use-local-storage-state'
 import { EventStorageKey, ProjectStorageKey, TaskStorageKey, TrackStorageKey } from '../Constants'
-import { EventSet, TodoSet, ProjectSet, TrackSet, TaskSet, Task } from '../DoData'
+import { EventSet, ProjectSet, TrackSet, TaskSet, Task, TodoSetV2 } from '../DoData'
 import LoadData from '../LoadData'
 import UnloadData from '../UnloadData'
 
@@ -26,11 +26,11 @@ function navigateToTaskDataInterchange() {
     link.click()
 }
 
-export const defaultToDoData: TodoSet = {
+export const defaultToDoData: TodoSetV2 = {
     todos: [
-        { text: "Download default configuration", done: 0, days: [], persist: false },
-        { text: "Edit to make it yours", done: 0, days: [], persist: false },
-        { text: "Ingest your data", done: 0, days: [], persist: false },
+        { text: "Download default configuration", done: 0, days: [], persist: false, no_earlier: '' },
+        { text: "Edit to make it yours", done: 0, days: [], persist: false, no_earlier: '' },
+        { text: "Ingest your data", done: 0, days: [], persist: false, no_earlier: '' },
     ]
 }
 

@@ -1,12 +1,12 @@
 import { dayNowStartMilliseconds, weekStartMilliseconds } from "../DateUtilities"
-import { Todo } from "../DoData"
+import { TodoV2 } from "../DoData"
 import ToDo from "./ToDo"
 
 interface RepeatingDosProps {
-    data: Todo[]
+    data: TodoV2[]
 }
 
-const persistCheck = (item: Todo): boolean => {
+const persistCheck = (item: TodoV2): boolean => {
     if( item.days.length == 0){
         return true
     }
@@ -16,7 +16,7 @@ const persistCheck = (item: Todo): boolean => {
 
     let previousDay = -1
     let latestDay = -1
-    item.days.forEach(day => {
+    item.days.forEach((day : number) => {
         if (day > latestDay) latestDay = day
         if (day > previousDay && day <= today) previousDay = day
         // console.log("day: ", day, " latest: ", latestDay, " previous: ", previousDay)
@@ -31,6 +31,13 @@ const persistCheck = (item: Todo): boolean => {
     return lastWeek[dayPersistedFrom] > item.done
 }
 
+function noEarlierThanCheck(todo: TodoV2): boolean {
+    const date = new Date()
+    const time = date.getHours() * 60 + date.getMinutes()
+    const boundaryTime = + todo.no_earlier
+    return time > boundaryTime
+}
+
 const RepeatingDos = ({ data }: RepeatingDosProps) => {
     const dayStart = dayNowStartMilliseconds()
 
@@ -39,6 +46,7 @@ const RepeatingDos = ({ data }: RepeatingDosProps) => {
             data
                 .filter(todo => todo.done < dayStart)
                 .filter(todo => persistCheck(todo))
+                .filter(todo => noEarlierThanCheck(todo))
                 .map((todo) => <ToDo key={todo.text} todo={todo} />)
         }
     </ul>

@@ -1,10 +1,4 @@
 
-export interface Todo {
-    text: string
-    done: number
-    days: number[]
-    persist: boolean
-}
 
 export interface TodoV2 {
     text: string
@@ -12,10 +6,6 @@ export interface TodoV2 {
     days: number[]
     persist: boolean
     no_earlier: string
-}
-
-export interface TodoSet {
-    todos: Todo[]
 }
 
 export interface TodoSetV2 {
@@ -85,12 +75,6 @@ export interface TaskV2 {
     time: number
     taskIds: number[]
 }
-
-// export interface TaskV2Set {
-//     [index: number]: TaskV2
-//     currentId: number
-//     nextId: number
-// }
 
 export interface TaskV2SetV2 {
     [index: number]: TaskV2
