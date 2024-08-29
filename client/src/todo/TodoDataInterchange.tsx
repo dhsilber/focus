@@ -24,16 +24,19 @@ function TodoDataInterchange() {
     return <>
         <div>
             <span>
-                <button onClick={() => setTodoData('')} style={{ padding: '0.75rem 0.75rem' }}>Clear</button>
+                <button onClick={() => setTodoData('')} style={{ padding: '0.5rem 0.75rem' }}><div>Clear</div></button>
             </span>
             <span>
-                <button onClick={() => setTodoData(currentTodoV2Data)} style={{ padding: '0.5rem' }}><div>Export</div> ToDoV2 data</button>
+                <button onClick={() => setTodoData(currentTodoV2Data)} style={{ padding: '0.5rem' }}><div>Export</div>ToDoV2 data</button>
             </span>
             <span>
-                <button onClick={() => setTodoV2Storage(JSON.parse(todoData))} style={{ padding: '0.5rem' }}><div>Import</div> ToDoV2 data</button>
+                <button onClick={() => setTodoV2Storage(JSON.parse(todoData))} style={{ padding: '0.5rem' }}><div>Import</div>ToDoV2 data</button>
             </span>
             <span>
                 <button onClick={() => navigateToHome()} style={{ padding: '0.5rem' }}><div>Return to</div> main page</button>
+            </span>
+            <span style={{ margin: '0 0.4rem'}}>
+                {todoV2Storage?.todos.length} items
             </span>
         </div>
         <div>
