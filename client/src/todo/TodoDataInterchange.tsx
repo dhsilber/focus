@@ -35,6 +35,7 @@ function TodoDataInterchange() {
             <span>
                 <button onClick={() => navigateToHome()} style={{ padding: '0.5rem' }}><div>Return to</div> main page</button>
             </span>
+            <br/>
             <span style={{ margin: '0 0.4rem'}}>
                 {todoV2Storage?.todos.length} items
             </span>
