@@ -1,4 +1,5 @@
 export const TodoV2StorageKey = 'do-next-todo-v2'
+export const TodoV3StorageKey = 'do-next-todo-v3'
 export const EventStorageKey = 'do-next-event2'
 export const ProjectStorageKey = 'do-next-project'
 export const TrackStorageKey = 'do-next-track'

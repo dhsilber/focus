@@ -1,8 +1,8 @@
 import useLocalStorageState from 'use-local-storage-state'
 import '../DoNext.css'
-import { TodoV2StorageKey } from '../Constants'
+import { TodoV2StorageKey, TodoV3StorageKey } from '../Constants'
 import { useState } from 'react'
-import { TodoSetV2 } from '../DoData'
+import { TodoSetV2, TodoSetV3, TodoV3 } from '../DoData'
 
 function navigateToHome() {
     const link = document.createElement("a")
@@ -15,11 +15,34 @@ function TodoDataInterchange() {
 
     const [todoV2Storage, setTodoV2Storage] = useLocalStorageState<TodoSetV2>(TodoV2StorageKey, {})
 
+    const [todoV3Storage, setTodoV3Storage] = useLocalStorageState<TodoSetV3>(TodoV3StorageKey, {})
+
     function handleIncomingTodos(event: React.ChangeEvent<HTMLTextAreaElement>) {
         setTodoData(event.target.value)
     }
 
+    function migrateDataToV3() {
+        const version3: TodoSetV3 = {todos: []}
+
+        todoV2Storage?.todos.forEach(item => {
+            const thing: TodoV3 = {
+                text: item.text,
+                done: item.done,
+                days: item.days,
+                persist: item.persist,
+                no_earlier: item.no_earlier,
+                deadline: '',
+                duration: ''
+            }
+            version3.todos.push( thing )
+        })
+
+        setTodoV3Storage( version3)
+
+    }
+
     const currentTodoV2Data = JSON.stringify(todoV2Storage, null, 2)
+    const currentTodoV3Data = JSON.stringify(todoV3Storage, null, 2)
 
     return <>
         <div>
@@ -30,7 +53,13 @@ function TodoDataInterchange() {
                 <button onClick={() => setTodoData(currentTodoV2Data)} style={{ padding: '0.5rem' }}><div>Export</div>ToDoV2 data</button>
             </span>
             <span>
+                <button onClick={() => setTodoData(currentTodoV3Data)} style={{ padding: '0.5rem' }}><div>Show</div>ToDoV data</button>
+            </span>
+            <span>
                 <button onClick={() => setTodoV2Storage(JSON.parse(todoData))} style={{ padding: '0.5rem' }}><div>Import</div>ToDoV2 data</button>
+            </span>
+            <span>
+                <button onClick={() => migrateDataToV3()} style={{ padding: '0.5rem' }}><div>Migrate ToDoV2</div>data to TodoV3</button>
             </span>
             <span>
                 <button onClick={() => navigateToHome()} style={{ padding: '0.5rem' }}><div>Return to</div> main page</button>

@@ -12,6 +12,20 @@ export interface TodoSetV2 {
     todos: TodoV2[]
 }
 
+export interface TodoV3 {
+    text: string
+    done: number
+    days: number[]
+    persist: boolean
+    no_earlier: string
+    deadline: string
+    duration: string
+}
+
+export interface TodoSetV3 {
+    todos: TodoV3[]
+}
+
 export interface Event {
     id: number
     text: string
