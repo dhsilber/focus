@@ -29,6 +29,7 @@ function TodoDataInterchange() {
                 text: item.text,
                 done: item.done,
                 days: item.days,
+                postponed: false,
                 persist: item.persist,
                 no_earlier: item.no_earlier,
                 deadline: '',
@@ -53,7 +54,7 @@ function TodoDataInterchange() {
                 <button onClick={() => setTodoData(currentTodoV2Data)} style={{ padding: '0.5rem' }}><div>Export</div>ToDoV2 data</button>
             </span>
             <span>
-                <button onClick={() => setTodoData(currentTodoV3Data)} style={{ padding: '0.5rem' }}><div>Show</div>ToDoV data</button>
+                <button onClick={() => setTodoData(currentTodoV3Data)} style={{ padding: '0.5rem' }}><div>Show</div>ToDoV3 data</button>
             </span>
             <span>
                 <button onClick={() => setTodoV2Storage(JSON.parse(todoData))} style={{ padding: '0.5rem' }}><div>Import</div>ToDoV2 data</button>

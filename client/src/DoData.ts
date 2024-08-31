@@ -16,6 +16,7 @@ export interface TodoV3 {
     text: string
     done: number
     days: number[]
+    postponed: boolean
     persist: boolean
     no_earlier: string
     deadline: string
