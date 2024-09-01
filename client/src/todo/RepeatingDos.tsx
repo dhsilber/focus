@@ -1,5 +1,6 @@
 import { dayNowStartMilliseconds, weekStartMilliseconds } from "../DateUtilities"
 import { TodoV3 } from "../DoData"
+import { postponedCheck } from "./Postpone"
 import ToDo from "./ToDo"
 
 interface RepeatingDosProps {
@@ -47,8 +48,7 @@ const RepeatingDos = ({ data }: RepeatingDosProps) => {
                 .filter(todo => todo.done < dayStart)
                 .filter(todo => persistCheck(todo))
                 .filter(todo => noEarlierThanCheck(todo))
-                // TODO If I delete this, also delete in Postpone.ts.
-                // .filter(todo => postponedCheck(todo))
+                .filter(todo => postponedCheck(todo))
                 .map((todo) => <ToDo key={todo.text} todo={todo} />)
         }
     </ul>

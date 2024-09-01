@@ -19,10 +19,6 @@ export function postpone(
     })
 }
 
-// TODO Do I need this? See RepeatingDos.tsx
 export function postponedCheck(todo: TodoV3): boolean {
-    const date = new Date()
-    const time = date.getHours() * 60 + date.getMinutes()
-    const boundaryTime: number = + todo.no_earlier
-    return time > boundaryTime
+    return todo.days.length == 0 || !todo.postponed
 }
