@@ -1,12 +1,12 @@
 import { dayNowStartMilliseconds, weekStartMilliseconds } from "../DateUtilities"
-import { TodoV2 } from "../DoData"
+import { TodoV3 } from "../DoData"
 import ToDo from "./ToDo"
 
 interface RepeatingDosProps {
-    data: TodoV2[]
+    data: TodoV3[]
 }
 
-const persistCheck = (item: TodoV2): boolean => {
+const persistCheck = (item: TodoV3): boolean => {
     if( item.days.length == 0){
         return true
     }
@@ -31,10 +31,10 @@ const persistCheck = (item: TodoV2): boolean => {
     return lastWeek[dayPersistedFrom] > item.done
 }
 
-function noEarlierThanCheck(todo: TodoV2): boolean {
+function noEarlierThanCheck(todo: TodoV3): boolean {
     const date = new Date()
     const time = date.getHours() * 60 + date.getMinutes()
-    const boundaryTime = + todo.no_earlier
+    const boundaryTime: number = + todo.no_earlier
     return time > boundaryTime
 }
 
@@ -47,6 +47,8 @@ const RepeatingDos = ({ data }: RepeatingDosProps) => {
                 .filter(todo => todo.done < dayStart)
                 .filter(todo => persistCheck(todo))
                 .filter(todo => noEarlierThanCheck(todo))
+                // TODO If I delete this, also delete in Postpone.ts.
+                // .filter(todo => postponedCheck(todo))
                 .map((todo) => <ToDo key={todo.text} todo={todo} />)
         }
     </ul>

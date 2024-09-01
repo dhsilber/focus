@@ -1,16 +1,16 @@
 
 
-export interface TodoV2 {
-    text: string
-    done: number
-    days: number[]
-    persist: boolean
-    no_earlier: string
-}
+// export interface TodoV2 {
+//     text: string
+//     done: number
+//     days: number[]
+//     persist: boolean
+//     no_earlier: string
+// }
 
-export interface TodoSetV2 {
-    todos: TodoV2[]
-}
+// export interface TodoSetV2 {
+//     todos: TodoV2[]
+// }
 
 export interface TodoV3 {
     text: string

@@ -1,15 +1,16 @@
-import { TodoSetV2, TodoV2 } from "../DoData"
+import { TodoSetV3, TodoV3 } from "../DoData"
 
-const checker = (
+export function checker (
     // event: React.MouseEvent<HTMLInputElement, MouseEvent>,
-    item: TodoV2,
-    storedData: TodoSetV2,
-    setStore: (data: TodoSetV2) => void
-) => {
+    item: TodoV3,
+    storedData: TodoSetV3,
+    setStore: (data: TodoSetV3) => void
+) {
     const data = storedData.todos
     data.forEach(datum => {
         if (datum.text === item.text) {
             datum.done = Date.now()
+            datum.postponed = false
             setStore(storedData)
             return
         }

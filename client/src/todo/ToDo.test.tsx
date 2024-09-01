@@ -1,6 +1,6 @@
 import { expect, test, vi } from 'vitest'
 import { fireEvent, render, screen } from "@testing-library/react"
-import { TodoV2 } from "../DoData"
+import { TodoV3 } from "../DoData"
 import ToDo from "./ToDo"
 import checker from "./Checker"
 import { defaultToDoData } from "../storage/Storage"
@@ -8,7 +8,7 @@ vi.mock('./Checker')
 
 test('displays name of todo', () => {
     const name = "Text of todo"
-    const data: TodoV2 = { text: name, done: 0, days: [], persist: false, no_earlier: '' }
+    const data: TodoV3 = { text: name, done: 0, days: [], persist: false, no_earlier: '', postponed: false, deadline: '', duration: '' }
 
     render(<ToDo todo={data} />)
 
@@ -17,7 +17,7 @@ test('displays name of todo', () => {
 
 test('displays checkbox', () => {
     const name = "Text of todo"
-    const data: TodoV2 = { text: name, done: 0, days: [], persist: false, no_earlier: '' }
+    const data: TodoV3 = { text: name, done: 0, days: [], persist: false, no_earlier: '', postponed: false, deadline: '', duration: '' }
 
     render(<ToDo todo={data} />)
 
@@ -26,7 +26,7 @@ test('displays checkbox', () => {
 
 test('checking box stores timestamp', () => {
     const name = "Text of todo"
-    const data: TodoV2 = { text: name, done: 0, days: [], persist: false, no_earlier: '' }
+    const data: TodoV3 = { text: name, done: 0, days: [], persist: false, no_earlier: '', postponed: false, deadline: '', duration: '' }
 
     render(<ToDo todo={data} />)
 

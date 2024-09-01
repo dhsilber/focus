@@ -1,7 +1,7 @@
 import '../DoNext.css'
 import useLocalStorageState from 'use-local-storage-state'
 import { EventStorageKey, ProjectStorageKey, TaskStorageKey, TrackStorageKey } from '../Constants'
-import { EventSet, ProjectSet, TrackSet, TaskSet, Task, TodoSetV2 } from '../DoData'
+import { EventSet, ProjectSet, TrackSet, TaskSet, Task, TodoSetV3 } from '../DoData'
 import LoadData from '../LoadData'
 import UnloadData from '../UnloadData'
 
@@ -26,11 +26,11 @@ function navigateToTaskDataInterchange() {
     link.click()
 }
 
-export const defaultToDoData: TodoSetV2 = {
+export const defaultToDoData: TodoSetV3 = {
     todos: [
-        { text: "Download default configuration", done: 0, days: [], persist: false, no_earlier: '' },
-        { text: "Edit to make it yours", done: 0, days: [], persist: false, no_earlier: '' },
-        { text: "Ingest your data", done: 0, days: [], persist: false, no_earlier: '' },
+        { text: "Download default configuration", done: 0, days: [], persist: false, no_earlier: '', postponed: false, deadline: '', duration: '' },
+        { text: "Edit to make it yours", done: 0, days: [], persist: false, no_earlier: '', postponed: false, deadline: '', duration: '' },
+        { text: "Ingest your data", done: 0, days: [], persist: false, no_earlier: '', postponed: false, deadline: '', duration: '' },
     ]
 }
 
@@ -95,7 +95,7 @@ export const defaultTaskData: TaskSet = {
     last_id: 0,
 }
 
-// export const defaultTaskDataV2: TaskSetV2 = {
+// export const defaultTaskDataV3: TaskSetV3 = {
 //     tasks: [],
 //     last_id: 0,
 // }
@@ -114,8 +114,8 @@ const Storage = () => {
         defaultValue: defaultTaskData
     })
 
-    // const [taskStorageV2, setTaskStorageV2] = useLocalStorageState(TaskStorageKey, {
-    //     defaultValue: defaultTaskDataV2
+    // const [taskStorageV3, setTaskStorageV3] = useLocalStorageState(TaskStorageKey, {
+    //     defaultValue: defaultTaskDataV3
     // })
 
     const [trackStorage, setTrackStorage] = useLocalStorageState(TrackStorageKey, {
