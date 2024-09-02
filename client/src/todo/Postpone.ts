@@ -20,5 +20,6 @@ export function postpone(
 }
 
 export function postponedCheck(todo: TodoV3): boolean {
+    
     return todo.days.length == 0 || !todo.postponed
 }

@@ -1,8 +1,8 @@
 import useLocalStorageState from 'use-local-storage-state'
 import '../DoNext.css'
-import { TodoV3StorageKey } from '../Constants'
+import { HourMilliseconds, TodoV3StorageKey, TodoV4StorageKey } from '../Constants'
 import { useState } from 'react'
-import { TodoSetV3 } from '../DoData'
+import { TodoSetV3, TodoSetV4, TodoV4 } from '../DoData'
 
 function navigateToHome() {
     const link = document.createElement("a")
@@ -13,7 +13,7 @@ function navigateToHome() {
 function TodoDataInterchange() {
     const [todoData, setTodoData] = useState('')
 
-    // const [todoV2Storage, setTodoV2Storage] = useLocalStorageState<TodoSetV2>(TodoV2StorageKey, {})
+    const [todoV4Storage, setTodoV4Storage] = useLocalStorageState<TodoSetV4>(TodoV4StorageKey, {})
 
     const [todoV3Storage, setTodoV3Storage] = useLocalStorageState<TodoSetV3>(TodoV3StorageKey, {})
 
@@ -21,27 +21,28 @@ function TodoDataInterchange() {
         setTodoData(event.target.value)
     }
 
-    // function migrateDataToV3() {
-    //     const version3: TodoSetV3 = {todos: []}
+    function migrateDataToV4() {
+        const version4: TodoSetV4 = {todos: []}
 
-    //     todoV2Storage?.todos.forEach(item => {
-    //         const thing: TodoV3 = {
-    //             text: item.text,
-    //             done: item.done,
-    //             days: item.days,
-    //             postponed: false,
-    //             persist: item.persist,
-    //             no_earlier: item.no_earlier,
-    //             deadline: '',
-    //             duration: ''
-    //         }
-    //         version3.todos.push( thing )
-    //     })
+        todoV3Storage?.todos.forEach(item => {
+            const thing: TodoV4 = {
+                text: item.text,
+                done: item.done,
+                days: item.days,
+                postponed: item.postponed ? Date.now() - 14 * HourMilliseconds : 0 ,
+                persist: item.persist,
+                no_earlier: item.no_earlier,
+                deadline: 0,
+                duration: 0,
+                alternating: 0,
+            }
+            version4.todos.push( thing )
+        })
 
-    //     setTodoV3Storage( version3)
-    // }
+        setTodoV4Storage( version4)
+    }
 
-    // const currentTodoV2Data = JSON.stringify(todoV2Storage, null, 2)
+    const currentTodoV4Data = JSON.stringify(todoV4Storage, null, 2)
     const currentTodoV3Data = JSON.stringify(todoV3Storage, null, 2)
 
     return <>
@@ -52,15 +53,15 @@ function TodoDataInterchange() {
             <span>
                 <button onClick={() => setTodoData(currentTodoV3Data)} style={{ padding: '0.5rem' }}><div>Export</div>ToDoV3 data</button>
             </span>
-            {/* <span>
-                <button onClick={() => setTodoData(currentTodoV3Data)} style={{ padding: '0.5rem' }}><div>Show</div>ToDoV3 data</button>
-            </span> */}
             <span>
                 <button onClick={() => setTodoV3Storage(JSON.parse(todoData))} style={{ padding: '0.5rem' }}><div>Import</div>ToDoV3 data</button>
             </span>
-            {/* <span>
-                <button onClick={() => migrateDataToV3()} style={{ padding: '0.5rem' }}><div>Migrate ToDoV2</div>data to TodoV3</button>
-            </span> */}
+            <span>
+                <button onClick={() => migrateDataToV4()} style={{ padding: '0.5rem' }}><div>Migrate ToDoV3</div>data to TodoV4</button>
+            </span>
+            <span>
+                <button onClick={() => setTodoData(currentTodoV4Data)} style={{ padding: '0.5rem' }}><div>Show</div>ToDoV4 data</button>
+            </span>
             <span>
                 <button onClick={() => navigateToHome()} style={{ padding: '0.5rem' }}><div>Return to</div> main page</button>
             </span>
