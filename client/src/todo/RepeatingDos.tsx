@@ -1,13 +1,13 @@
 import { dayNowStartMilliseconds, weekStartMilliseconds } from "../DateUtilities"
-import { TodoV3 } from "../DoData"
+import { TodoV4 } from "../DoData"
 import { postponedCheck } from "./Postpone"
 import ToDo from "./ToDo"
 
 interface RepeatingDosProps {
-    data: TodoV3[]
+    data: TodoV4[]
 }
 
-const persistCheck = (item: TodoV3): boolean => {
+const persistCheck = (item: TodoV4): boolean => {
     if( item.days.length == 0){
         return true
     }
@@ -32,7 +32,7 @@ const persistCheck = (item: TodoV3): boolean => {
     return lastWeek[dayPersistedFrom] > item.done
 }
 
-function noEarlierThanCheck(todo: TodoV3): boolean {
+function noEarlierThanCheck(todo: TodoV4): boolean {
     const date = new Date()
     const time = date.getHours() * 60 + date.getMinutes()
     const boundaryTime: number = + todo.no_earlier

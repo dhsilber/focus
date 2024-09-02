@@ -1,4 +1,6 @@
-import { DayMilliseconds, MinuteMilliseconds } from "./Constants"
+export const MinuteMilliseconds = 60 * 1000
+export const HourMilliseconds = 60 * MinuteMilliseconds
+export const DayMilliseconds = 24 * HourMilliseconds
 
 const commonDayStart = (date: Date) => {
     const nowYear = date.getFullYear()

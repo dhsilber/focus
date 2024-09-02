@@ -7,25 +7,25 @@
 //     persist: boolean
 //     no_earlier: string
 // }
-
+// 
 // export interface TodoSetV2 {
 //     todos: TodoV2[]
 // }
 
-export interface TodoV3 {
-    text: string
-    done: number
-    days: number[]
-    postponed: boolean
-    persist: boolean
-    no_earlier: string
-    deadline: string
-    duration: string
-}
+// export interface TodoV3 {
+//     text: string
+//     done: number
+//     days: number[]
+//     postponed: boolean
+//     persist: boolean
+//     no_earlier: string
+//     deadline: string
+//     duration: string
+// }
 
-export interface TodoSetV3 {
-    todos: TodoV3[]
-}
+// export interface TodoSetV3 {
+//     todos: TodoV3[]
+// }
 
 export interface TodoV4 {
     text: string

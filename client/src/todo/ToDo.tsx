@@ -1,16 +1,16 @@
 import useLocalStorageState from 'use-local-storage-state'
 import checker from "./Checker"
-import { TodoV3StorageKey } from "../Constants"
-import { TodoV3 } from "../DoData"
+import { TodoV4StorageKey } from "../Constants"
+import { TodoV4 } from "../DoData"
 import { defaultToDoData } from "../storage/Storage"
 import { postponable, postpone } from './Postpone'
 
 export interface ToDoProps {
-    todo: TodoV3
+    todo: TodoV4
 }
 
 const ToDo = ({ todo }: ToDoProps) => {
-    const [todoStorage, setTodoStorage] = useLocalStorageState(TodoV3StorageKey, {
+    const [todoStorage, setTodoStorage] = useLocalStorageState(TodoV4StorageKey, {
         defaultValue: defaultToDoData
     })
 

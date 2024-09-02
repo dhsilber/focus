@@ -4,7 +4,7 @@ import MockDate from 'mockdate'
 import EventEdit from './EventEdit'
 import { Event } from '../DoData'
 import userEvent from '@testing-library/user-event'
-import { MinuteMilliseconds } from '../Constants'
+import { MinuteMilliseconds } from '../DateUtilities'
 
 const emptyEvent: Event = {
     id: 0,

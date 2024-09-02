@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { MinuteMilliseconds } from '../Constants'
 import { Event } from "../DoData"
 import Entry from './Entry'
+import { MinuteMilliseconds } from '../DateUtilities'
 
 interface EventEditProps {
     event: Event

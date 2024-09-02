@@ -1,7 +1,7 @@
 import '../DoNext.css'
 import useLocalStorageState from 'use-local-storage-state'
 import { EventStorageKey, ProjectStorageKey, TaskStorageKey, TrackStorageKey } from '../Constants'
-import { EventSet, ProjectSet, TrackSet, TaskSet, Task, TodoSetV3 } from '../DoData'
+import { EventSet, ProjectSet, TrackSet, TaskSet, Task, TodoSetV4 } from '../DoData'
 import LoadData from '../LoadData'
 import UnloadData from '../UnloadData'
 
@@ -26,11 +26,11 @@ function navigateToTaskDataInterchange() {
     link.click()
 }
 
-export const defaultToDoData: TodoSetV3 = {
+export const defaultToDoData: TodoSetV4 = {
     todos: [
-        { text: "Download default configuration", done: 0, days: [], persist: false, no_earlier: '', postponed: false, deadline: '', duration: '' },
-        { text: "Edit to make it yours", done: 0, days: [], persist: false, no_earlier: '', postponed: false, deadline: '', duration: '' },
-        { text: "Ingest your data", done: 0, days: [], persist: false, no_earlier: '', postponed: false, deadline: '', duration: '' },
+        { text: "Download default configuration", done: 0, days: [], persist: false, no_earlier: '', postponed: 0, deadline: 0, duration: 0, alternating: 0 },
+        { text: "Edit to make it yours", done: 0, days: [], persist: false, no_earlier: '', postponed: 0, deadline: 0, duration: 0, alternating: 0 },
+        { text: "Ingest your data", done: 0, days: [], persist: false, no_earlier: '', postponed: 0, deadline: 0, duration: 0, alternating: 0 },
     ]
 }
 
