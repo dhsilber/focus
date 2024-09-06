@@ -1,5 +1,6 @@
 import { dayNowStartMilliseconds, weekStartMilliseconds } from "../DateUtilities"
 import { TodoV4 } from "../DoData"
+import { alternateCheck } from "./Alternate"
 import { postponedCheck } from "./Postpone"
 import ToDo from "./ToDo"
 
@@ -49,6 +50,7 @@ const RepeatingDos = ({ data }: RepeatingDosProps) => {
                 .filter(todo => persistCheck(todo))
                 .filter(todo => noEarlierThanCheck(todo))
                 .filter(todo => postponedCheck(todo))
+                .filter(todo => alternateCheck(todo))
                 .map((todo) => <ToDo key={todo.text} todo={todo} />)
         }
     </ul>

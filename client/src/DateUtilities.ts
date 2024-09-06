@@ -69,5 +69,5 @@ export const humanTimeToMillisecondsSinceMidnight = (humanTime: number) => {
     const hours = Math.trunc( humanTime / 100 )
     const minutes = humanTime % 100
 
-return (hours * 60 + minutes) * MinuteMilliseconds
+    return (hours * 60 + minutes) * MinuteMilliseconds
 }
